@@ -2,6 +2,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Main {
+    /**
+     * Method utama program yang mendemonstrasikan operasi Array dan ArrayList.
+     * Program menampilkan:
+     * 1. Operasi dasar Array (traversal, pencarian, penyisipan, penghapusan)
+     * 2. Operasi dasar ArrayList (traversal, pencarian, penyisipan, penghapusan, pengurutan)
+     * 3. Perbandingan kinerja antara Array dan ArrayList
+     * @param args argumen baris perintah (tidak digunakan)
+     */
     public static void main(String[] args) {
         int[] array = {10, 20, 30, 40, 50};
         ArrayList<Integer> arrayList = new ArrayList<>(Arrays.asList(10, 20, 30, 40, 50));
@@ -47,6 +55,11 @@ public class Main {
         Comparison.runPerformanceTest(1000, 900);
     }
 
+    /**
+     * Memformat hasil pencarian menjadi string yang mudah dibaca.
+     * @param index indeks hasil pencarian
+     * @return pesan yang menunjukkan apakah elemen ditemukan dan posisinya
+     */
     private static String formatSearchResult(int index) {
         return index >= 0 ? "Ditemukan di indeks " + index : "Tidak ditemukan";
     }

@@ -5,6 +5,12 @@ import java.util.Locale;
 public class Comparison {
     private static final int REPETITIONS = 1000;
 
+    /**
+     * Menjalankan tes perbandingan kinerja antara Array dan ArrayList.
+     * Mengukur waktu eksekusi untuk berbagai operasi (pencarian, penyisipan, penghapusan, pengurutan).
+     * @param size jumlah elemen dalam struktur data
+     * @param target nilai yang akan dicari
+     */
     public static void runPerformanceTest(int size, int target) {
         int[] arrayData = createSequentialArray(size);
         ArrayList<Integer> arrayListData = createSequentialArrayList(size);
@@ -54,6 +60,12 @@ public class Comparison {
         System.out.println("\nCatatan: estimasi memori ArrayList dibuat sederhana karena ada overhead objek dan kapasitas internal.");
     }
 
+    /**
+     * Mencetak satu baris tabel perbandingan kinerja.
+     * @param operation nama operasi
+     * @param arrayTime waktu eksekusi untuk Array dalam milidetik
+     * @param arrayListTime waktu eksekusi untuk ArrayList dalam milidetik
+     */
     private static void printRow(String operation, double arrayTime, double arrayListTime) {
         String arrayText = String.format(Locale.US, "%.6f", arrayTime);
         String arrayListText = Double.isNaN(arrayListTime)
@@ -62,6 +74,12 @@ public class Comparison {
         System.out.printf("| %-20s | %14s | %14s |\n", operation, arrayText, arrayListText);
     }
 
+    /**
+     * Menghitung waktu rata-rata eksekusi operasi dalam milidetik.
+     * Operasi dijalankan berkali-kali untuk mendapatkan pengukuran yang akurat.
+     * @param operation operasi yang akan diukur waktu eksekusinya
+     * @return waktu rata-rata dalam milidetik
+     */
     private static double averageTime(Runnable operation) {
         long total = 0L;
         for (int i = 0; i < REPETITIONS; i++) {
@@ -73,6 +91,11 @@ public class Comparison {
         return total / (double) REPETITIONS / 1_000_000.0;
     }
 
+    /**
+     * Membuat array dengan elemen berurutan dari 1 hingga size.
+     * @param size jumlah elemen yang akan dibuat
+     * @return array berisi elemen 1, 2, 3, ..., size
+     */
     private static int[] createSequentialArray(int size) {
         int[] data = new int[size];
         for (int i = 0; i < size; i++) {
@@ -81,6 +104,11 @@ public class Comparison {
         return data;
     }
 
+    /**
+     * Membuat ArrayList dengan elemen berurutan dari 1 hingga size.
+     * @param size jumlah elemen yang akan dibuat
+     * @return ArrayList berisi elemen 1, 2, 3, ..., size
+     */
     private static ArrayList<Integer> createSequentialArrayList(int size) {
         ArrayList<Integer> list = new ArrayList<>(size);
         for (int i = 0; i < size; i++) {
